@@ -1,6 +1,13 @@
 import pyaudio
 import wave
 import speech_recognition as sr
+import subprocess
+from commands import Commander
+
+running = True
+
+def say(text):
+    subprocess.call("say "+ text, shell=True)
 
 def play_audio(filename):
     chunk = 1024
@@ -28,7 +35,9 @@ def play_audio(filename):
 
   
 r = sr.Recognizer()
-r.energy_threshold=5000
+r.energy_threshold=4000
+
+cmd = Commander()
 
 def init_speech():
     print("Listening...")
@@ -59,5 +68,13 @@ def init_speech():
     print("Your command: ")
     print(command)
 
+    if command == "quit":
+        global running
+        running = False
 
-init_speech()
+    cmd.discover(command)
+
+    # say("You said "+ command)
+
+while running == True:
+    init_speech()
