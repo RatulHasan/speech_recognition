@@ -1,5 +1,6 @@
 import pyaudio
 import wave
+import speech_recognition as sr
 
 def play_audio(filename):
     chunk = 1024
@@ -22,5 +23,9 @@ def play_audio(filename):
     stream.close()
     pa.terminate()
 
+r = sr.Recognizer()
 
-play_audio("audio/whistle-slide-down.wav")
+def initSpeech():
+    print("Listening...")
+
+    play_audio("audio/whistle-slide-down.wav")
