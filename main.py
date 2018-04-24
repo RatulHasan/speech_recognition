@@ -36,7 +36,7 @@ def init_speech():
     play_audio("audio/beep.wav")
 
     with sr.Microphone() as source:
-        print("Say something")
+        print("Say something...")
         audio = r.listen(source)
 
     # write audio to a RAW file
