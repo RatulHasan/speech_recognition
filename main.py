@@ -23,9 +23,34 @@ def play_audio(filename):
     stream.close()
     pa.terminate()
 
-r = sr.Recognizer()
 
-def initSpeech():
+# play_audio("audio/whistle-slide-down.wav")
+
+  
+r = sr.Recognizer()
+r.energy_threshold=4000
+
+def init_speech():
     print("Listening...")
 
-    play_audio("audio/whistle-slide-down.wav")
+    play_audio("audio/beep.wav")
+
+    with sr.Microphone() as source:
+        print("Say something")
+        audio = r.listen(source)
+
+    play_audio("./audio/Beep5.wav")
+
+    command = ""
+
+    try:
+        command = r.recognize_google(audio)
+    except:
+        print("Couldn't understand you!")
+
+    print("Your commane: ")
+    print(command)
+
+
+
+init_speech()
