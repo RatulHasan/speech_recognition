@@ -28,7 +28,7 @@ def play_audio(filename):
 
   
 r = sr.Recognizer()
-r.energy_threshold=4000
+r.energy_threshold=5000
 
 def init_speech():
     print("Listening...")
@@ -58,7 +58,6 @@ def init_speech():
 
     print("Your command: ")
     print(command)
-
 
 
 init_speech()
